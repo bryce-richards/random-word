@@ -26,23 +26,35 @@ export default class SearchResults extends Component {
 
   render() {
     return (
-      <div className="demo-card-wide mdl-card mdl-shadow--2dp">
-        <div className="mdl-card__actions mdl-card--border">
-          <a 
-          className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+      <div className="col-4 card">
+      <div className="card-body">
+        {
+          this.props.searching ? 
+          (
+            <div class="spinner-border" role="status"/>
+          ) : 
+          ( 
+            <div>
+              <h5 className="card-title">
+                {this.props.word}
+              </h5>
+              <div className="card-text">
+                {this.buildDefinition()}
+              </div>
+            </div>
+          )
+        }
+        </div>
+        <div class="row card-footer text-muted">
+          <button 
+            type="button" 
+            className="col btn btn-primary btn-lg btn-block" 
             onClick={this.handleClick}
           >
-            Click Me
-          </a>
+            Search
+          </button>
         </div>
-        <div className="mdl-card__title">
-          <h6 className="mdl-card__title-text">{this.props.word}</h6>
-        </div>
-        <div className="mdl-card__supporting-text">
-          {this.buildDefinition()}
-          <div className={`mdl-spinner mdl-js-spinner ${this.props.searching ? 'is-active' : ''}`} />
-        </div>       
-      </div>
+      </div> 
     )
   }
 }

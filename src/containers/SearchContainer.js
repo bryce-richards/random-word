@@ -55,7 +55,9 @@ export default class SearchContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div 
+        className="row justify-content-md-center" 
+        style={{marginTop: "24px"}} >
         <SearchResults 
           onRandomWord={this.handleRandomWord} 
           word={this.state.word}
