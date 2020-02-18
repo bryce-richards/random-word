@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchResults from '../components/SearchResults';
+import SearchResults from './SearchResults';
 import fetchWord from '../helpers/fetchWord';
 import fetchDefinition from '../helpers/fetchDefinition';
 
@@ -11,7 +11,7 @@ export default class SearchContainer extends Component {
         word: "",
         shortdef: [],
         searching: false
-    }
+    };
 
     this.handleRandomWord = this.handleRandomWord.bind(this);
     this.handleDefinition = this.handleDefinition.bind(this);
@@ -28,7 +28,12 @@ export default class SearchContainer extends Component {
       .then(data => {
         const { word } = data;
 
-        this.handleDefinition(word);
+        if (word.split(' ').length > 1) {
+          this.handleRandomWord();
+        } else {
+          this.handleDefinition(word);
+        }
+        
       })
       .catch(e => console.log("Word error: ", e));
   }
@@ -57,7 +62,8 @@ export default class SearchContainer extends Component {
     return (
       <div 
         className="row justify-content-md-center" 
-        style={{marginTop: "24px"}} >
+        style={{marginTop: "24px"}} 
+      >
         <SearchResults 
           onRandomWord={this.handleRandomWord} 
           word={this.state.word}
