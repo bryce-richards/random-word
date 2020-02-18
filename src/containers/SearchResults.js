@@ -44,6 +44,7 @@ export default class SearchResults extends Component {
             ( 
               <SearchBody 
                 word={this.props.word}
+                hw={this.props.hw}
                 definition={this.buildDefinition()}/>
             )
           }

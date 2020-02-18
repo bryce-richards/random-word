@@ -20,6 +20,7 @@ export default class SearchContainer extends Component {
   handleRandomWord() {
     this.setState({
       word: "",
+      hw: "",
       shortdef: [],
       searching: true
     });
@@ -43,10 +44,15 @@ export default class SearchContainer extends Component {
       .then(data => {
 
         if (data.length && data[0].hasOwnProperty("shortdef")) {
+          console.log('data: ', data);
           const { shortdef } = data[0];
+          const { id } = data[0].meta;
+          let { hw } = data[0].hwi;
+          hw = hw.split("*").join("-");
 
           this.setState({ 
-            word, 
+            word: id,
+            hw, 
             shortdef, 
             searching: false
           });
@@ -67,6 +73,7 @@ export default class SearchContainer extends Component {
         <SearchResults 
           onRandomWord={this.handleRandomWord} 
           word={this.state.word}
+          hw={this.state.hw}
           shortdef={this.state.shortdef}
           searching={this.state.searching}
         />

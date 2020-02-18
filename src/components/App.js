@@ -2,10 +2,6 @@ import React from 'react';
 import Navbar from '../containers/Navbar';
 import SearchContainer from '../containers/SearchContainer';
 
-const SearchContainerStyle = {
-  marginTop: "24px"
-};
-
 function App() {
   return (
     <div>
