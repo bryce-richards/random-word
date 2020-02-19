@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import SearchResults from './SearchResults';
 import fetchWord from '../helpers/fetchWord';
 import fetchDefinition from '../helpers/fetchDefinition';
+import buildDefinitions from '../helpers/buildDefinitions';
 
 export default class SearchContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-        word: "",
-        shortdef: [],
+        hw: "",
+        mw: "",
+        def: [],
         searching: false
     };
 
@@ -19,9 +21,9 @@ export default class SearchContainer extends Component {
 
   handleRandomWord() {
     this.setState({
-      word: "",
       hw: "",
-      shortdef: [],
+      mw: "",
+      def: [],
       searching: true
     });
 
@@ -44,16 +46,16 @@ export default class SearchContainer extends Component {
       .then(data => {
 
         if (data.length && data[0].hasOwnProperty("shortdef")) {
-          console.log('data: ', data);
-          const { shortdef } = data[0];
-          const { id } = data[0].meta;
           let { hw } = data[0].hwi;
-          hw = hw.split("*").join("-");
+          hw = hw.split("*").join("");
+          
+          const { mw } = data[0].hwi.prs[0]; 
+          const def = buildDefinitions(data);
 
           this.setState({ 
-            word: id,
-            hw, 
-            shortdef, 
+            hw,
+            mw,
+            def,
             searching: false
           });
 
@@ -71,11 +73,8 @@ export default class SearchContainer extends Component {
         style={{marginTop: "24px"}} 
       >
         <SearchResults 
-          onRandomWord={this.handleRandomWord} 
-          word={this.state.word}
-          hw={this.state.hw}
-          shortdef={this.state.shortdef}
-          searching={this.state.searching}
+          {...this.state}
+          onRandomWord={this.handleRandomWord}
         />
       </div>
     )
