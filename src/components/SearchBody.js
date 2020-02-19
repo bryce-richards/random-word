@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchDefinition from './SearchDefinition';
-import DetermineLabel from '../helpers/determineLabel';
+import { determineLabel } from '../utils/helpers';
 
 const flColors = {
   "adjective" : "info",
@@ -25,11 +25,11 @@ export default class SearchBody extends Component {
 
   buildDefinitions() {
     const { def } = this.props;
-    
+
     return def.map((def, i) => {
 
       const { fl, shortdef } = def;
-      const label = DetermineLabel(fl);
+      const label = determineLabel(fl);
 
       return (
         <li key={i} className={`list-group-item list-group-item-${this.getClass(label)}`}>

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import SearchResults from './SearchResults';
-import fetchWord from '../helpers/fetchWord';
-import fetchDefinition from '../helpers/fetchDefinition';
-import buildDefinitions from '../helpers/buildDefinitions';
+import { fetchWord, fetchDefinition, buildDefinitions } from '../utils/helpers';
 
 export default class SearchContainer extends Component {
   constructor(props) {
@@ -48,7 +46,8 @@ export default class SearchContainer extends Component {
         if (
           data.length
           && data[0].hasOwnProperty("shortdef")
-          && data[0].hasOwnProperty("hwi") 
+          && data[0].hasOwnProperty("hwi")
+          && data[0].hwi.hasOwnProperty("hw")
           && data[0].hwi.hasOwnProperty("prs")
           && data[0].hwi.prs.length
         ) {
