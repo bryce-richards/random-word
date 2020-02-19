@@ -32,7 +32,7 @@ export default class SearchBody extends Component {
       const label = determineLabel(fl);
 
       return (
-        <li key={i} className={`list-group-item list-group-item-${this.getClass(label)}`}>
+        <li key={i} className={`row list-group-item list-group-item-${this.getClass(label)}`}>
           <SearchDefinition 
             fl={fl}
             shortdef={shortdef} />
@@ -43,12 +43,12 @@ export default class SearchBody extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div>
         <div className="card-body">
-          <h5 className="card-title">
+          <h5 className="row card-title">
             {this.props.hw}
           </h5>
-          <h6 className="card-subtitle mb-2 text-muted">
+          <h6 className="row card-subtitle mb-2 text-muted">
             {this.props.mw}
           </h6>
         </div>

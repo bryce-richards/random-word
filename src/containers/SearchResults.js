@@ -17,7 +17,7 @@ export default class SearchResults extends Component {
 
   render() {
     return (
-      <div className="col-4 card border-primary mb-3">
+      <div className="col-4 card border-dark mb-3">
        <div className="row card-header">
           <SearchButton 
             searching={this.props.searching} 
