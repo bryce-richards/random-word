@@ -21,12 +21,6 @@ export default class SearchDefinition extends Component {
     super(props);
 
     this.buildDefinitions = this.buildDefinitions.bind(this);
-    this.getClass = this.getClass.bind(this);
-  }
-
-  getClass() {
-    let flClass = flColors[this.props.label];
-    return flClass;
   }
 
   buildDefinitions() {

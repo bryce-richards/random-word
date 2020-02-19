@@ -45,10 +45,16 @@ export default class SearchContainer extends Component {
     fetchDefinition(word)
       .then(data => {
 
-        if (data.length && data[0].hasOwnProperty("shortdef")) {
+        if (
+          data.length
+          && data[0].hasOwnProperty("shortdef")
+          && data[0].hasOwnProperty("hwi") 
+          && data[0].hwi.hasOwnProperty("prs")
+          && data[0].hwi.prs.length
+        ) {
           let { hw } = data[0].hwi;
           hw = hw.split("*").join("");
-          
+
           const { mw } = data[0].hwi.prs[0]; 
           const def = buildDefinitions(data);
 

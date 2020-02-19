@@ -25,7 +25,7 @@ export default class SearchBody extends Component {
 
   buildDefinitions() {
     const { def } = this.props;
-    console.log("def: ", def);
+    
     return def.map((def, i) => {
 
       const { fl, shortdef } = def;
