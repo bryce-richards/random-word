@@ -74,7 +74,7 @@ export default class SearchContainer extends Component {
   render() {
     return (
       <div 
-        className="row justify-content-md-center" 
+        className="row justify-content-center" 
         style={{marginTop: "24px"}} 
       >
         <SearchResults 
