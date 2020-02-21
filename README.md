@@ -6,3 +6,7 @@ Single Page React / Node application created using:
 
 
 Deployed application can be viewed [here](https://bryce-random-word.herokuapp.com/).
+
+Random Word Generator will provide a random word and any available definition(s) as per Merriam-Webster. 
+
+Definitions are dynamically highlighted depending on the given functional label (e.g. 'noun', 'adverb').
